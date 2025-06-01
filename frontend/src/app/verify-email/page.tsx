@@ -40,7 +40,7 @@ export default function VerifyEmailPage() {
       setTimeout(() => {
         router.push('/login');
       }, 2000);
-    } catch (err: any) {
+    } catch (err:any) {
       setError(err.response?.data?.error || 'Verification failed');
     } finally {
       setLoading(false);
@@ -71,7 +71,7 @@ export default function VerifyEmailPage() {
     <AuthForm title="Verify Your Email" onSubmit={handleSubmit} loading={loading}>
       <div className="text-center mb-4">
         <p className="text-sm text-gray-600">
-          We've sent a verification code to:
+          We&#39;ve sent a verification code to:
         </p>
         <p className="font-medium text-gray-900">{email}</p>
       </div>

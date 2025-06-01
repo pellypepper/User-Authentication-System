@@ -23,33 +23,31 @@ export default function HomePage() {
           </h1>
           
           {user ? (
-            <div className="space-y-6">
-              <p className="text-xl text-gray-600">
-                Hello, {user.firstname} {user.lastname}!
-              </p>
-              <div className="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
-                <h3 className="text-lg font-semibold mb-4">Account Status</h3>
-                <div className="space-y-2 text-left">
-                  <p><span className="font-medium">Email:</span> {user.email}</p>
-                  <p>
-                    <span className="font-medium">Verified:</span> 
-                    <span className={`ml-2 px-2 py-1 rounded text-sm ${
-                      user.verified 
-                        ? 'bg-green-100 text-green-800' 
-                        : 'bg-red-100 text-red-800'
-                    }`}>
-                      {user.verified ? 'Yes' : 'No'}
-                    </span>
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="/profile"
-                className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700"
-              >
-                Manage Profile
-              </Link>
-            </div>
+           <div className="space-y-6">
+      <p className="text-xl text-gray-600">
+        Hello, {user.firstname} {user.lastname}!
+      </p>
+      <div className="bg-white rounded-lg shadow p-6 max-w-md mx-auto">
+        <h3 className="text-lg font-semibold mb-4">Account Status</h3>
+        <div className="space-y-2 text-left">
+          <p><span className="font-medium">Email:</span> {user.email}</p>
+          <p>
+            <span className="font-medium">Verified:</span> 
+            <span className={`ml-2 px-2 py-1 rounded text-sm ${
+              user.verified ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+            }`}>
+              {user.verified ? 'Yes' : 'No'}
+            </span>
+          </p>
+        </div>
+      </div>
+      <Link
+        href="/profile"
+        className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+      >
+        Manage Profile
+      </Link>
+      </div>
           ) : (
             <div className="space-y-6">
               <p className="text-xl text-gray-600">
@@ -58,7 +56,7 @@ export default function HomePage() {
               <div className="space-x-4">
                 <Link
                   href="/login"
-                  className="inline-block bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700"
+                  className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
                 >
                   Sign In
                 </Link>

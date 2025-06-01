@@ -9,7 +9,7 @@ import LoadingSpinner from '@/component/LoadingSpinner';
 export default function ProfilePage() {
   const { user, setUser } = useAuth();
   const router = useRouter();
-
+const [hasCheckedAuth, setHasCheckedAuth] = useState(false);
   const [activeTab, setActiveTab] = useState<'profile' | 'password'>('profile');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -26,10 +26,11 @@ export default function ProfilePage() {
   });
   const [isCheckingAuth, setIsCheckingAuth] = useState(true);
 
-  // Only check auth on mount (and when setUser changes)
-  useEffect(() => {
+  // Only check auth on mount 
+useEffect(() => {
   let ignore = false;
-  if (!user) {
+
+  if (!user && !hasCheckedAuth) {
     console.log('Fetching user profile...');
     authApi.getProfile()
       .then(profile => {
@@ -42,26 +43,30 @@ export default function ProfilePage() {
             email: profile.user?.email || ''
           });
           setIsCheckingAuth(false);
+          setHasCheckedAuth(true); 
         }
       })
       .catch(err => {
         if (!ignore) {
           console.error('Failed to get profile:', err);
+          setHasCheckedAuth(true); 
           router.replace('/login');
         }
       });
-  } else {
+  } else if (user) {
     setProfileData({
       firstname: user.firstname || '',
       lastname: user.lastname || '',
       email: user.email || ''
     });
     setIsCheckingAuth(false);
+    setHasCheckedAuth(true); 
   }
-  return () => { ignore = true; };
-}, [user, setUser, router]);
 
-  // Show spinner while checking authentication
+  return () => { ignore = true; };
+}, [user, setUser, router, hasCheckedAuth]);
+
+  // Show spinner 
   if (isCheckingAuth) {
     return (
       <div className="min-h-screen flex items-center justify-center">

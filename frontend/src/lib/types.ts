@@ -54,7 +54,7 @@ export interface ResetPasswordRequest {
   newPassword: string;
 }
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   message: string;
   user?: T;
   error?: string;

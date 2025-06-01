@@ -54,7 +54,7 @@ export default function Navigation() {
                 </Link>
                 <Link
                   href="/register"
-                  className="bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
+                  className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
                 >
                   Register
                 </Link>

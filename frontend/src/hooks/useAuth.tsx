@@ -5,7 +5,7 @@ import { User } from '@/lib/types';
 import { getStoredUser, setStoredUser, removeStoredUser } from '@/lib/auth';
 import { authApi } from '@/lib/api';
 
-// Define the context type
+// context type
 interface AuthContextType {
   user: User | null;
   loading: boolean;
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       removeStoredUser();
       setUser(null);
     } catch (error) {
-      // Even if API call fails, clear local storage
+      console.error('Logout failed:', error);
       removeStoredUser();
       setUser(null);
     }
@@ -65,7 +65,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  // Provide the context value to children
+  // context value to children
   return (
     <AuthContext.Provider value={{ user, loading, login, logout, setUser: updateUser }}>
       {children}
